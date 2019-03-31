@@ -1,0 +1,140 @@
+.itemOptions{
+    margin-top:5%;
+}
+.itemOptions-candidatos, .itemOptions-editar, .itemOptions-eliminar, .itemOptions-more{
+    background-color:rgba(0,0,0,0.8)!important;
+}
+
+.itemOptions-candidatos i, .itemOptions-editar i, .itemOptions-eliminar i, .itemOptions-more i{
+    color:rgb(254,204,22)!important;
+}
+
+.itemPublicidade-card a{
+    height: 200px;
+}
+
+.itemPublicidade-card a img{
+    max-width: auto!important;
+    max-height: 100%!important;
+}
+
+.btn-answer-modal{
+    color:rgb(254,204,22)!important;
+}
+
+.close:hover{
+    color:rgb(254,204,22)!important;
+}
+
+.form-control:focus{
+    box-shadow: 0px 0px rgb(254,204,22)!important;
+    border: 1px solid rgb(254,204,22);
+}
+
+.detalhe-publicidade-desc{
+    font-weight: bolder;
+}
+
+.publicidade-descricao{
+    border: none;
+    /*box-shadow: 1px 1px rgba(0,0,0,0.1)!important;*/
+}
+
+#a-header-login{
+    color:rgb(255,255,255);
+}
+
+#a-header-login:hover{
+    text-decoration: underline;
+    color:rgb(254,204,22);
+}
+
+
+
+/*
+===============================================================================================
+---------------------------- BEGINING FORM AND MODAL CODE -------------------------------------
+===============================================================================================
+*/
+
+@media (min-width: 576px){
+    div.modal-dialog {
+        max-width: 800px;
+        margin: 0.75rem auto;
+    }
+}
+
+.btn-add-publicidade{
+    background-color: rgba(0,0,0,0.8);
+    color: #ffffff;
+}
+
+.input-margin-b{
+    margin-bottom: 15px;
+}
+
+.desc-title{
+    color: rgba(0,0,0,0.8);
+    font-weight: 500;
+}
+
+
+div>trix-editor {
+    padding: 0.4em 1.5em;
+    background-color: #ffffff;
+}
+
+.response-preview-image{
+    min-height: 15rem;
+    max-height: 15rem;
+    height: 15rem;
+    border-radius: 5px;
+    background-color: #ccc6;
+    display: none;
+}
+
+#blah{
+    height:100%!important;
+}
+
+.hidden{
+    display: none;
+}
+
+.btn-default-df{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+input.df-datepicker{
+    font-size: 14px;
+    color: #808080;
+    background: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
+    -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
+    padding: 0 15px;
+    line-height: 40px;
+    text-transform: capitalize;
+    border: 1px !important;
+}
+
+.input-group-addon{
+    border: 0 solid rgba(0, 0, 0, 0.15) !important;
+}
+
+.description-card{
+    height: 70px;
+    min-height: 70px;
+    max-height: 70px;
+}
+
+/*
+===============================================================================================
+--------------------------------- END FORM AND MODAL CODE -------------------------------------
+===============================================================================================
+*/
+
