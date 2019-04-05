@@ -16,7 +16,7 @@ class controllPublicidade extends Controller
         $publicidade->descricao = filter_input(INPUT_POST , 'publicidadeDescription');
         //$publicidade->estado = "activo";
         $publicidade->foto = "";
-        $publicidade->idCliente=1;
+        $publicidade->idCliente=filter_input(INPUT_POST , 'publicidadeClient');
 
         $imagem =  $request->file('publicidadeFoto');
 

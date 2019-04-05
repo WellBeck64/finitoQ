@@ -114,7 +114,7 @@
                         <a class="page-scroll" href="#about" id="a-about">Quem Somos?</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="{{URL::to('publicidade')}}">Publicidade</a>
+                        <a class="page-scroll" id="a-publicidade" href="#publicidades">Publicidade</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contactos</a>
@@ -148,10 +148,8 @@
                     <hr class="primary">
                 </div>
             </div>
-
-            <div class="row publicidade-destaque">
-                
-            </div>
+            <div id="data-container"></div>
+            <div id="pagination-container"></div>
         </div>
     </section>
 
@@ -307,12 +305,12 @@
     <script src="{{asset('/homePage/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 
     <!-- Theme JavaScript -->
+    <script src="{{asset('/js/pagination.min.js')}}"></script>
     <script src="{{asset('/homePage/js/creative.min.js')}}"></script>
 
     <script>
 
         $(document).ready(function(){
-
             //CAROUSEL
             $('.carousel[data-type="multi"] .item').each(function(){
                 var next = $(this).next();
@@ -332,6 +330,50 @@
             });
             //CAROUSEL END
 
+            function simpleTemplating(data) {
+                var html = '<div class="row publicidade-destaque">';
+                
+                $(data).each(function(){
+                    html += "<div class=\"col-md-4 pub-items\">"+
+                                "<div class=\"card\">"+
+                                    "<img class=\"pub-item-img img-fluid\" src='"+document.location.origin+'/finitoQ/public/backoffice/images/filesPublicidade/'+this.foto +"' alt=\"Avatar\" style=\"max-width: 100%;width:100%\">"+
+                                    "<div class=\"pub-items-body\">"+
+                                        "<h4><b>"+this.titulo+"</b></h4>"+ 
+                                        "<p>"+this.descricao.substring(0, 87)+"...</p>"+ 
+                                        "<div class=\"pub-item-btn\">"+
+                                            "<button class=\"btn btn-default pub-item-btn-detalhe\" data-idPublicidade=\""+this.id+"\">Ver Detalhes</button>"+
+                                            "<button class=\"btn btn-default pub-item-btn-solicitar\" data-toggle=\"tooltip\" title=\"Solicitar Serviço\"> <i class=\"fa fa-paper-plane\" aria-hidden=\"true\"></i></button>"+
+                                        "</div>"+ 
+                                    "</div>"+
+                                "</div>"+
+                            "</div>";
+                });
+                html += '</div>';
+                return html;
+            }
+
+            $('#pagination-container').pagination({
+                dataSource: function(done) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        method:'POST',
+                        url: 'search/publicidade',
+                        dataType:'json',
+                        success: function(response) {
+                            done(response);
+                        }
+                    });
+                },
+                pageSize: 6,
+                callback: function(data, pagination) {
+                    var html = simpleTemplating(data);
+                    $('#data-container').html(html);
+                }
+            })
+
+            /*
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -370,6 +412,7 @@
                     }
                 }
             });
+            */
 
             $(document).on('click', '.pub-item-btn-solicitar' , function() {
                 $('#modal-responder-publicidade').modal('show');
@@ -433,6 +476,11 @@
             $('#a-about').click(function(){
                 $('#publicidades').hide();
                 $('#about,#services').show();
+            });
+
+            $('#a-publicidade').click(function(){
+                $('#publicidades').show();
+                $('#about,#services').hide();
             });
 
             $(window).scroll(function(){

@@ -1,23 +1,107 @@
-.carousel-control 			 { width:  4%; }
-.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
-@media (max-width: 767px) {
-	.carousel-inner .active.left { left: -100%; }
-	.carousel-inner .next        { left:  100%; }
-	.carousel-inner .prev		 { left: -100%; }
-	.active > div { display:none; }
-	.active > div:first-child { display:block; }
+.paginationjs .paginationjs-pages ul{
+	float: left;
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding: 0;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
 
+.paginationjs .paginationjs-pages li:first-child, .paginationjs .paginationjs-pages li:first-child>a {
+    border-radius: 3px 0 0 3px;
 }
-@media (min-width: 767px) and (max-width: 992px ) {
-	.carousel-inner .active.left { left: -50%; }
-	.carousel-inner .next        { left:  50%; }
-	.carousel-inner .prev		 { left: -50%; }
-	.active > div { display:none; }
-	.active > div:first-child { display:block; }
-	.active > div:first-child + div { display:block; }
+
+.paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #aaa;
+    border-top-color: rgb(170, 170, 170);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: initial;
+    border-right-style: none;
+    border-right-width: initial;
+    border-bottom-color: rgb(170, 170, 170);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(170, 170, 170);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-right: none;
+    border-right-width: initial;
+    border-right-style: none;
+    border-right-color: initial;
+    list-style: none;
+    list-style-type: none;
+    list-style-position: initial;
+    list-style-image: initial;
 }
-@media (min-width: 992px ) {
-	.carousel-inner .active.left { left: -25%; }
-	.carousel-inner .next        { left:  25%; }
-	.carousel-inner .prev		 { left: -25%; }	
+
+.paginationjs .paginationjs-pages li:first-child, .paginationjs .paginationjs-pages li:first-child>a {
+    border-radius: 3px 0 0 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 3px;
 }
+
+.paginationjs .paginationjs-pages li.disabled>a {
+    opacity: .3;
+}
+
+.paginationjs .paginationjs-pages li>a {
+    min-width: 30px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+}
+
+.paginationjs .paginationjs-pages li:first-child, .paginationjs .paginationjs-pages li:first-child>a {
+    border-radius: 3px 0 0 3px;
+}
+.paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #aaa;
+    border-right: none;
+    list-style: none;
+}
+
+.paginationjs .paginationjs-pages li.active {
+    /*border: none;*/
+}
+.paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #aaa;
+    border-right: none;
+    list-style: none;
+}
+
+.paginationjs .paginationjs-pages li.paginationjs-next {
+    border-right: 1px solid #aaa;
+}
+
+.paginationjs .paginationjs-pages li:last-child {
+    border-right: 1px solid #aaa;
+    border-radius: 0 3px 3px 0;
+}
+.paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #aaa;
+    border-right: none;
+    list-style: none;
+}
+

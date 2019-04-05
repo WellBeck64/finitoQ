@@ -294,7 +294,7 @@
                                   @csrf
 
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Adicionar Anúncio De Vaga</h5>
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Adicionar Publicidade</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
@@ -305,6 +305,16 @@
                                       <div class="col">
                                         <input type="text" class="form-control input-margin-b" id="publicidadeTitulo" name="publicidadeTitulo" placeholder="Titulo">
                                       </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="publicidadeClient">Selecione o Cliente</label>
+                                                <select class="form-control input-margin-b" id="publicidadeClient" name="publicidadeClient">
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -324,7 +334,7 @@
 
                                       <div class="col">
                                         <div class="response-preview-image">
-                                          <img id="blah" src="#" class="img-fluid" alt="Preview Imagem do Anúncio" />
+                                          <img id="blah" src="#" class="img-fluid" alt="Preview Imagem do Publicidade" />
                                         </div>
                                       </div>
                                     </div>
@@ -528,6 +538,37 @@
 
 
         $(document).ready(function(){
+            
+           //GET CLIENTS 
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method:'POST',
+                url:"searchAllCliente/clientePublicidade",
+                dataType:'json',
+                success: function (result) {
+                    $('#publicidadeClient').empty();
+                    
+                    if(!result){
+                        console.log(result);
+                    }else {
+                        
+                        /*$('#publicidadeClient').append(
+                            '<option value="">Selecione o Cliente</option>'
+                        );*/
+                        
+                        $(result).each(function () {
+                            $('#publicidadeClient').append(
+                                '<option value="'+this.id+'">'+this.nome+'</option>'
+                            );
+                        });
+                        
+                    }
+                }
+            });
+
+            //END GET CLIENTS
 
             $('.itemOptions').click(function(){
                 $('#sectionPublicidades').hide('100');
