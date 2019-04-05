@@ -26,6 +26,7 @@
 
     <!-- Theme CSS -->
     <link href="{{asset('/homePage/css/creative.css')}}" rel="stylesheet">
+    <link href="{{asset('/homePage/css/customStyle.css')}}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,6 +87,11 @@
             background: url("{{url('homePage/img/bg.png')}}");
             background-size: cover;
         }
+
+        #contact{
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -105,10 +111,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Quem Somos?</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">O Que Fazemos</a>
+                        <a class="page-scroll" href="#about" id="a-about">Quem Somos?</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="{{URL::to('publicidade')}}">Publicidade</a>
@@ -139,97 +142,14 @@
 
     <section style="background-color:#fff;" id="publicidades">
         <div class="container">
-        <div class="row">
+            <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading" style="text-transform:uppercase;">Serviços</h2>
+                    <h2 class="section-heading" style="text-transform:uppercase;">Nossas Publicidades</h2>
                     <hr class="primary">
                 </div>
             </div>
+
             <div class="row publicidade-destaque">
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/1.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p> 
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar" data-toggle="tooltip" title="Solicitar Serviço"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/2.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p> 
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/3.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p> 
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/4.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p>
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/5.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p> 
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 pub-items">
-                    <div class="card">
-                        <img class="pub-item-img" src="{{asset('/homePage/img/img_avatar.png')}}" alt="Avatar" style="width:100%">
-                        <div class="pub-items-body">
-                            <h4><b>Jane Doe</b></h4> 
-                            <p>Interior Designer</p> 
-                            <div class="pub-item-btn">
-                                <button class="btn btn-default pub-item-btn-detalhe">Ver Detalhes</button>
-                                <button class="btn btn-default pub-item-btn-solicitar"> <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
         </div>
@@ -247,8 +167,8 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Quem Somos?</h2>
                     <hr class="light">
-                    <p class="text-faded">Somos uma Empresa  Especializada em Markeeting Digital, nomeadamente em Publicidade e Gerenciamento de mídias sociais.<br><br> A Finito Q. Markeeting Digital Soluction, surge no inicio de 2018, com o objectivo de reduzir os custos com publicidades dos nossos clientes.<br><br>A sua Visão é ser reconhecida como a melhor empresa de markeeting digital que oferece as melhores soluções a baixo custos para as empresas nos proximos 3 anos.</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">O Que Fazemos</a>
+                    <p>Somos uma Empresa  Especializada em Markeeting Digital, nomeadamente em Publicidade e Gerenciamento de mídias sociais.<br><br> A Finito Q. Markeeting Digital Soluction, surge no inicio de 2018, com o objectivo de reduzir os custos com publicidades dos nossos clientes.<br><br>A sua Visão é ser reconhecida como a melhor empresa de markeeting digital que oferece as melhores soluções a baixo custos para as empresas nos proximos 3 anos.</p>
+                    <a href="#services" id="btnAboutus" class="page-scroll btn btn-default btn-xl sr-button">O Que Fazemos</a>
                 </div>
             </div>
         </div>
@@ -267,14 +187,14 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 text-center" >
                     <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons" id="i-newspaper"></i>
                         <h3>Publicidade</h3>
                         <p class="text-muted">Engajar clientes ou colaboradores e aumentar o alcance das marcas, empresas, negocios pessoas individuais em 300 pessoas por dia.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 text-center" style="border-left:1px solid rgb(234,129,2)">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        <i class="far fa-gem fa-4x text-primary sr-icons animated infinite pulse delay-2s" id="i-fa-gem"></i>
                         <h3>Gerenciamento de Mídias Sociais</h3>
                         <p class="text-muted">Processo interactivo de relacionamento , gerenciamento da presença online, melhoria e afirmação da imagem que vai desde planejamento de postagens, produção de conteúdo e monitoramento dos resultados.</p>
                     </div>
@@ -292,7 +212,7 @@
         </div>
     </aside>
 
-    <section id="contact" style="background:#f1f1f1">
+    <section id="contact" class="bg-dark">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 text-center">
@@ -302,21 +222,21 @@
                         Pronto para começar seu próximo projeto conosco? Isso é ótimo! Ligue para nós ou envie-nos um e-mail e entraremos em contato o mais breve possível!
                     </p>
                 </div>
-                <div class="col-lg-3 text-center">
-                    <i class="fas fa-phone-square fa-3x sr-contact"></i>
+                <div class="col-lg-3 text-center div-sr-contact">
+                    <i id="sr-contact-phone" class="fas fa-phone-square fa-3x sr-contact"></i>
                     <p>+244 998-980-780</p>
                     <p>+244 998-617-373</p>
                 </div>
-                <div class="col-lg-3 text-center">
-                    <i class="far fa-envelope fa-3x sr-contact"></i>
+                <div class="col-lg-3 text-center div-sr-contact">
+                    <i id="sr-contact-envelope" class="far fa-envelope fa-3x sr-contact div-sr-contact"></i>
                     <p><a href="mailto:finitoq@gmail.com">FinitoQ@gmail.com</a></p>
                 </div>
-                <div class="col-lg-3 text-center">
-                    <i class="fab fa-facebook-square fa-3x sr-contact"></i>
+                <div class="col-lg-3 text-center div-sr-contact">
+                    <i id="sr-contact-facebook" class="fab fa-facebook-square fa-3x sr-contact"></i>
                     <p><a href="https://www.facebook.com/FinitoQ.marketing/">Finito Q</a></p>
                 </div>
-                <div class="col-lg-3 text-center">
-                    <i class="fab fa-instagram fa-3x sr-contact"></i>
+                <div class="col-lg-3 text-center div-sr-contact">
+                    <i id="sr-contact-instagram" class="fab fa-instagram fa-3x sr-contact"></i>
                     <p>Finitoq._markeeting_digital</p>
                 </div>
             </div>
@@ -392,6 +312,25 @@
     <script>
 
         $(document).ready(function(){
+
+            //CAROUSEL
+            $('.carousel[data-type="multi"] .item').each(function(){
+                var next = $(this).next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+                
+                for (var i=0;i<2;i++) {
+                    next=next.next();
+                    if (!next.length) {
+                        next = $(this).siblings(':first');
+                    }
+                    
+                    next.children(':first-child').clone().appendTo($(this));
+                }
+            });
+            //CAROUSEL END
 
             $.ajax({
                 headers: {
@@ -474,7 +413,32 @@
             $('#a-soliciteJa').mouseover(function(){
                 animateCSS('#a-soliciteJa', 'swing');
             })
-            
+
+            $('#sr-contact-phone').mouseover(function(){
+                animateCSS('#sr-contact-phone', 'swing');
+            })
+
+            $('#sr-contact-envelope').mouseover(function(){
+                animateCSS('#sr-contact-envelope', 'swing');
+            })
+
+            $('#sr-contact-facebook').mouseover(function(){
+                animateCSS('#sr-contact-facebook', 'swing');
+            })
+
+            $('#sr-contact-instagram').mouseover(function(){
+                animateCSS('#sr-contact-instagram', 'swing');
+            })
+
+            $('#a-about').click(function(){
+                $('#publicidades').hide();
+                $('#about,#services').show();
+            });
+
+            $(window).scroll(function(){
+                console.log($('#services').position())
+            })
+
             function animateCSS(element, animationName, callback) {
                 const node = document.querySelector(element)
                 node.classList.add('animated', animationName)
@@ -490,6 +454,8 @@
             }
 
             setInterval(function(){ 
+                animateCSS('#i-newspaper', 'bounce');
+                animateCSS('#btnAboutus', 'rubberBand');
                 animateCSS('#a-soliciteJa', 'swing');
             }, 5000);
 
