@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Publicidade;
@@ -109,7 +110,11 @@ class controllPublicidade extends Controller
 
     public function searchAll()
     {
-        $publicidades = Publicidade::all();
+        $publicidades = DB::table('publicidades')
+                        ->join('clientes','publicidades.idCliente','=','clientes.id')
+                        ->select('publicidades.*','clientes.email')
+                        ->get();
+        //Publicidade::all();
         if(count($publicidades)>0)
         {
             return response()->json($publicidades);

@@ -11,6 +11,6 @@ class Publicidade extends Model
         'foto',
         'titulo',
         'descricacao',
-        'cliente_id'
+        'idCliente'
     ];
 }

@@ -73,7 +73,7 @@
         }
 
         .pub-item-img{
-            height:300px;
+            height:250px;
             border-radius: 5px 5px 0 0;
         }
 
@@ -288,8 +288,47 @@
 <!--End Modal-->
 
 <!-- Modal -->
+
     <div class="modal fade" id="modal-responder-publicidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Solicitar Este Serviço</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="input-group" style="margin-bottom:1%">
+                    <span class="input-group-addon"><i class="fas fa-user-tie"></i></i></span>
+                    <input id="add-solicitar-nome" type="text" class="form-control" name="add-solicitar-nome" placeholder="Nome">
+                </div>
+
+                <div class="input-group" style="margin-bottom:1%">
+                    <span class="input-group-addon"><i class="fas fa-envelope"></i></i></span>
+                    <input id="add-solicitar-email" type="text" class="form-control" name="add-solicitar-email" placeholder="Email">
+                </div>
+
+                <div class="input-group" style="margin-bottom:1%">
+                    <span class="input-group-addon"><i class="fas fa-phone"></i></i></span>
+                    <input id="add-solicitar-telemovel" type="text" class="form-control" name="add-solicitar-telemovel" placeholder="Telemovel">
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Descrição:</label>
+                    <textarea class="form-control" rows="5" id="add-solicitar-descricao"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" id="add-solicitar-btn">Solicitar</button>
+            </div>
+
+            </div>
+        </div>
     </div>
 <!-- Modal End -->
 
@@ -307,10 +346,42 @@
     <!-- Theme JavaScript -->
     <script src="{{asset('/js/pagination.min.js')}}"></script>
     <script src="{{asset('/homePage/js/creative.min.js')}}"></script>
+    <script src="{{asset('/backoffice/js/loadingoverlay.min.js')}}"></script>
 
     <script>
 
         $(document).ready(function(){
+            $(document).ajaxStart(function(){
+                $.LoadingOverlay("show");
+            });
+            $(document).ajaxStop(function(){
+                $.LoadingOverlay("hide");
+            });
+            //SOLICITAR
+            $('#add-solicitar-btn').click(function(){
+                let userAvaliable = {
+                    name:$('#add-solicitar-nome').val(),
+                    email:$('#add-solicitar-email').val(),
+                    telemovel:$('#add-solicitar-telemovel').val(),
+                    descricao:$('#add-solicitar-descricao').val(),
+                    //emailClient:$('#modal-responder-publicidade').attr('data-emailCliente')
+                    emailClient:'daniel20150154@outlook.com'
+                }
+                console.log(userAvaliable);
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    method:'POST',
+                    url: 'send/mail',
+                    dataType:'json',
+                    data:{'userAvaliable':userAvaliable},
+                    success: function(response) {
+                        $('#modal-responder-publicidade').modal('hide');
+                    }
+                });
+            })
+
             //CAROUSEL
             $('.carousel[data-type="multi"] .item').each(function(){
                 var next = $(this).next();
@@ -342,7 +413,7 @@
                                         "<p>"+this.descricao.substring(0, 87)+"...</p>"+ 
                                         "<div class=\"pub-item-btn\">"+
                                             "<button class=\"btn btn-default pub-item-btn-detalhe\" data-idPublicidade=\""+this.id+"\">Ver Detalhes</button>"+
-                                            "<button class=\"btn btn-default pub-item-btn-solicitar\" data-toggle=\"tooltip\" title=\"Solicitar Serviço\"> <i class=\"fa fa-paper-plane\" aria-hidden=\"true\"></i></button>"+
+                                            "<button class=\"btn btn-default pub-item-btn-solicitar\" data-email=\""+this.email+"\" data-toggle=\"tooltip\" title=\"Solicitar Serviço\"> <i class=\"fa fa-paper-plane\" aria-hidden=\"true\"></i></button>"+
                                         "</div>"+ 
                                     "</div>"+
                                 "</div>"+
@@ -362,6 +433,7 @@
                         url: 'search/publicidade',
                         dataType:'json',
                         success: function(response) {
+                            console.log(response);
                             done(response);
                         }
                     });
@@ -418,6 +490,8 @@
                 $('#modal-responder-publicidade').modal('show');
                 var idPublicidade = $(this).attr('data-idPublicidade');
                 $('#modal-responder-publicidade').attr('data-publicidadeId',idPublicidade);
+                $('#modal-responder-publicidade').attr('data-emailCliente',$(this).attr('data-email'));
+                
             });
         
 
@@ -435,7 +509,6 @@
                         data:{'idPublicidade':idPublicidade},
                         dataType:'json',
                         success: function (result) {
-                            console.log(result);
                             if(!result){
                                
                             }else {
@@ -443,7 +516,6 @@
                                 $('#detalhe-publicidade-item-descricao div').text(result.descricao);
                                 $('#detalhe-publicidade-item-dataPublicidade div').text(result.created_at.split(' ')[0]);
                                 $('#detalhe-publicidade-item-image').attr('src',document.location.origin+"/finitoQ/public/backoffice/images/filesPublicidade/"+result.foto);
-                                console.log(result);
                             }
                         }
                     });
@@ -482,10 +554,6 @@
                 $('#publicidades').show();
                 $('#about,#services').hide();
             });
-
-            $(window).scroll(function(){
-                console.log($('#services').position())
-            })
 
             function animateCSS(element, animationName, callback) {
                 const node = document.querySelector(element)

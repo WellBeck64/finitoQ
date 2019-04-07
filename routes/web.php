@@ -19,6 +19,8 @@ Route::get('/publicidade', function () {
     return view('publicidade');
 });
 
+Route::post('/send/mail', 'MailController@send');
+
 //CRUD PublicidadeS
 
 Route::post('search/publicidade','controllPublicidade@searchAll');
